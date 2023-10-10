@@ -2,8 +2,8 @@
 <% @post_images.each do |post_image| %>
 
 <h3>ユーザーネーム</h3>
-<%= post_image.user.name %>
-
+<%= post_image.user.name %><br>
+<%= image_tag post_image.user.get_profile_image(100,100) %>
 <h3>画像</h3>
 <%= link_to post_image_path(post_image.id) do %>
 <%= image_tag post_image.get_image %>
@@ -13,5 +13,7 @@
 
 <h3>本文</h3>
 <%= post_image.caption %>
+<br>
+<%= link_to "コメント#{post_image.post_comments.count}件",post_image_path(post_image.id) %>
 
 <% end %>
