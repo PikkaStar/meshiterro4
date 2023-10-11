@@ -8,21 +8,4 @@
 <% if @user == current_user %>
 <%= link_to "編集",edit_user_path(@user) %>
 <% end %>
-<% @post_image.each do |post_image| %>
-
-<h3>投稿画像</h3>
-<%= link_to post_image_path(post_image.id) do %>
-<%= image_tag post_image.get_image %>
-<% end %>
-
-<h3>ショップ名</h3>
-<%= post_image.shop_name %>
-<%= link_to "コメント#{post_image.post_comments.count}件",post_image_path(post_image.id) %>
-<h3>説明</h3>
-<%= post_image.caption %>
-
-<h3>ユーザーネーム</h3>
-<%= post_image.user.name %>
-
-
-<% end %>
+<%= render 'post_images/list',post_images: @post_image %>
